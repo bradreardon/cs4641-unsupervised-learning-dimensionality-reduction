@@ -43,7 +43,7 @@
 
     \subsection{$k$-means Clustering}
       \subsubsection{Parameter selection}
-        The main parameter for the $k$-means clustering algorithm is a value $k$, being the number of clusters that the algorithm will divide the data into. For both data sets, $k$ values of $2, 3, 4, 5, 6$ were tested for best performance. Each run of the algorithm used 20 initializations to ensure that the best possible cluster labelling is chosen for each data set. Smart initialization of clusters using the ``k-means++'' method ensure initial prototypes outperform random chance.
+        The main parameter for the $k$-means clustering algorithm is a value $k$, being the number of clusters that the algorithm will divide the data into. For both data sets, $k$ values of $2, 3, 4, 5, 6$ were tested for best performance. Each run of the algorithm used 20 initializations to ensure that the best possible cluster labeling is chosen for each data set. Smart initialization of clusters using the ``k-means++'' method ensure initial prototypes outperform random chance.
 
         The car data set did not perform very well in any of the $k$-means tests, with a maximum silhouette score of 0.119 being reported at a value of $k=3$. However, the data was known to be separated into 4 output classes, and the completeness of the instances over the attribute space led me to believe that a subset of the data may perform better.
 
@@ -66,7 +66,7 @@
         \end{figure}
 
       \subsubsection{Performance}
-        Using the ideal $k$ values of 4 and 2 for the cancer and car data sets respectively, learning curves were generated to evaluate the peformance over the two data sets. These curves can be found in \Fref{fig:kmeans-learning}.
+        Using the ideal $k$ values of 4 and 2 for the cancer and car data sets respectively, learning curves were generated to evaluate the performance over the two data sets. These curves can be found in \Fref{fig:kmeans-learning}.
 
         \begin{figure}[htb]
         \centering
@@ -137,7 +137,7 @@
         \label{fig:em-learning}
         \end{figure}
 
-        The fit times for these classifiers were 0.025s for the car data, and 0.027s for the cancer data. Interestingly enough, both data sets have high variance in their cross validation scores at least at some point during training. In addition, the cancer data set seemes to have had its cross-validation score converge with the training scores at the end of training. This result will be discussed further after attempting dimensionality reduction.
+        The fit times for these classifiers were 0.025s for the car data, and 0.027s for the cancer data. Interestingly enough, both data sets have high variance in their cross validation scores at least at some point during training. In addition, the cancer data set seems to have had its cross-validation score converge with the training scores at the end of training. This result will be discussed further after attempting dimensionality reduction.
 
   \section{Dimensionality Reduction}
     We will now evaluate dimensionality reduction algorithms, which are used for feature selection and to consolidate high-dimension datasets into data more easily digestible by machine learning algorithms. Note that with higher numbers of components, the dimensionality of the algorithm outputs is too high for 2D or 3D visualizations to be sufficient. As such, we will evaluate much of the performance of each algorithm on how it assists a clustering algorithm or a neural network in the next sections. This section will focus on identifying which dimensionality reduction algorithms are effective in clustering the data alone. 
@@ -210,9 +210,9 @@
   \section{Clustering with Dimensionality Reduction}
     Both the $k$-means clustering algorithm and expectation maximization algorithms were run with ICA and PCA for dimensionality reduction and compared to the standard clustering runs without dimensionality reduction.
 
-    \Fref{fig:cdr-plot-km-car} and \Fref{fig:cdr-plot-em-car} show the differences (or rather lack thereof) in the learning curves between the various runs with no dimensionality reduction, and with ICA and PCA. For the car dataset, dimensionality reduction had no discernable effect on the learning curve, further confirming the earlier hypothesis that such a complete covering of the attribute space does not gain any extra performance or information from reducing the dimensionality of the data.
+    \Fref{fig:cdr-plot-km-car} and \Fref{fig:cdr-plot-em-car} show the differences (or rather lack thereof) in the learning curves between the various runs with no dimensionality reduction, and with ICA and PCA. For the car dataset, dimensionality reduction had no discernible effect on the learning curve, further confirming the earlier hypothesis that such a complete covering of the attribute space does not gain any extra performance or information from reducing the dimensionality of the data.
 
-    In addition, both randomized projection and feature agglomeration were used for further attempts at dimensionality reduction, however again no discernable difference was found.
+    In addition, both randomized projection and feature agglomeration were used for further attempts at dimensionality reduction, however again no discernible difference was found.
 
     \begin{figure}[htb]
     \centering
@@ -393,13 +393,14 @@
 
     In all, in addition to another learning algorithm, clustering can easily function as a dimensionality reduction algorithm in itself. However, with small attribute spaces as we've discussed prior in this report, concatenating clustering results to the initial input was chosen as the best fit (pun intended) for this part of the assignment.
 
-  \section{Conclusion}
+  \section{Discussion}
     It is difficult to say whether clustering had tangible benefits over supervised learning or randomized optimization. Without better visualization of how the feature spaces within a data set interact, I was resigned to only looking at the clustering based on two features instead of the entire $n$-dimensional feature space of each data set.
 
     However, dimensionality reduction seemed relatively ineffective overall on both data sets because of the narrowness of the data. The car data set did not respond well to dimensionality reduction very well at all when applied to any other algorithms, for reasons mentioned earlier regarding completeness. There were performance improvements in some isolated cases, however it is difficult to give a recommendation for using these algorithms with these data sets without further, more granular investigation.
 
-    TODO Relate two assignments 1/2
+    We also saw that clustering algorithms present the opportunity to give a neural network a good starting point for weight optimization by starting with an uninformed (via unsupervised learning) guess based on the properties of the data. However, the main takeaway from this report is that dimensionality reduction and even clustering may not make sense for every type of data. For the two data sets I used, I had mixed results. The cancer data responded better to the addition of clustering or dimensionality reduction on top of an existing neural network, but both data sets lacked the width needed to postulate about the running time differences between running learning algorithms on a dimensionally reduced data set as opposed to an untouched one of high dimension.
 
+  \section{Conclusion}
     In exploring this topic in the future, I'd look toward using data sets with higher dimensions and without complete attribute coverage in order to further test the efficacy of dimensionality reduction on both discrete and continuous data. In that case, I would expect clustering and/or dimensionality reductions to provide huge performance gains for large, wide data sets when combined with a neural network as we did in previous sections.
 
 
