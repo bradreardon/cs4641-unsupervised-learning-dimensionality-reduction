@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 
+from algorithms.clustering_with_dr import cluster_dr
 from algorithms.kmeans import kmeans
 from algorithms.em import em
 from algorithms.pca import pca
@@ -38,6 +39,10 @@ if __name__ == "__main__":
     parser_rp = subparsers.add_parser(
         'rp', help='Runs dimensionality reduction using Randomized Projections.')
     parser_rp.set_defaults(func=rp)
+
+    parser_cluster_dr = subparsers.add_parser(
+        'cluster_dr', help='Runs dimensionality reduction, then clustering.')
+    parser_cluster_dr.set_defaults(func=cluster_dr)
 
     # Parse args and jump into correct algorithm
     options = parser.parse_args()

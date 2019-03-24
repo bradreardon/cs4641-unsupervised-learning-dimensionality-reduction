@@ -210,7 +210,101 @@
     \subsection{TODO pick feature selection algo??}
       TODO
 
+  \section{Clustering with Dimensionality Reduction}
+    Both the $k$-means clustering algorithm and expectation maximization algorithms were run with ICA and PCA for dimensionality reduction and compared to the standard clustering runs without dimensionality reduction.
+
+    \Fref{fig:cdr-plot-km-car} and \Fref{fig:cdr-plot-em-car} show the differences (or rather lack thereof) in the learning curves between the various runs with no dimensionality reduction, and with ICA and PCA. For the car dataset, dimensionality reduction had no discernable effect on the learning curve, further confirming the earlier hypothesis that such a complete covering of the attribute space does not gain any extra performance or information from reducing the dimensionality of the data.
+
+    In addition, both randomized projection and feature agglomeration were used for further attempts at dimensionality reduction, however again no discernable difference was found.
+
+    \begin{figure}[htb]
+    \centering
+
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/kmeans/car-learning.png}
+        \caption{No DR, car.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/cluster_dr/car-kmeans-pca-learning.png}
+        \caption{PCA, car.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/cluster_dr/car-kmeans-ica-learning.png}
+        \caption{ICA, car.dataset}
+      \end{subfigure}
+
+    \caption{$k$-means clustering, car.dataset}
+    \label{fig:cdr-plot-km-car}
+    \end{figure}
+
+    \begin{figure}[htb]
+    \centering
+
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/em/car-learning.png}
+        \caption{No DR, car.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/cluster_dr/car-em-pca-learning.png}
+        \caption{PCA, car.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/cluster_dr/car-em-ica-learning.png}
+        \caption{ICA, car.dataset}
+      \end{subfigure}
+
+    \caption{Expectation maximization, car.dataset}
+    \label{fig:cdr-plot-em-car}
+    \end{figure}
+    
+    \Fref{fig:cdr-plot-km-cancer} and \Fref{fig:cdr-plot-em-cancer} show the same results for running clustering algorithms along with or without dimensionality reduction, however this time on the breast cancer data set. For the $k$-means clustering algorithm, the cross-validation score reported with dimensionality reduction was much lower than in the case of running clustering without DR. However, while running expectation maximization, the effects of using any form of dimensionality reduction are less pronounced.
+
+    The resulting plot with $k$-means clustering and dimensionality reduction on the cancer data is indicative of DR having a positive effect on the clustering algorithm. Namely, it seems that using DR allowed the $k$-means clustering algorithm to filter out noise by grouping together attributes that have relationships.
+
+    \begin{figure}[htb]
+    \centering
+
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/kmeans/cancer-learning.png}
+        \caption{No DR, cancer.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/cluster_dr/cancer-kmeans-pca-learning.png}
+        \caption{PCA, cancer.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/cluster_dr/cancer-kmeans-ica-learning.png}
+        \caption{ICA, cancer.dataset}
+      \end{subfigure}
+
+    \caption{$k$-means clustering, cancer.dataset}
+    \label{fig:cdr-plot-km-cancer}
+    \end{figure}
+
+
+    \begin{figure}[htb]
+    \centering
+
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/em/cancer-learning.png}
+        \caption{No DR, cancer.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/cluster_dr/cancer-em-pca-learning.png}
+        \caption{PCA, cancer.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/cluster_dr/cancer-em-ica-learning.png}
+        \caption{ICA, cancer.dataset}
+      \end{subfigure}
+
+    \caption{Expectation maximization, cancer.dataset}
+    \label{fig:cdr-plot-em-cancer}
+    \end{figure}
+
   \section{Conclusion}
-    TODO
+    TODO DR seems mostly ineffective on my data sets, perhaps improvements in some cases, but too few features to really make sense of if it's helping 
+
+
 
 \end{document}
