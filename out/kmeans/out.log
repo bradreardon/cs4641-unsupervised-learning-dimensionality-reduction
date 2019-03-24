@@ -1,34 +1,44 @@
 car
 For n_clusters = 2
-	The average silhouette_score is: 0.05295327461760963
-	Training time: 0.0565s
+	The average silhouette_score is: 0.053
+	Score: -6.96e+03
+	Training time: 0.0544s
 For n_clusters = 3
-	The average silhouette_score is: 0.11891384759606478
-	Training time: 0.0847s
+	The average silhouette_score is: 0.119
+	Score: -6.19e+03
+	Training time: 0.0842s
 For n_clusters = 4
-	The average silhouette_score is: 0.0979109034553062
-	Training time: 0.107s
+	The average silhouette_score is: 0.0979
+	Score: -6e+03
+	Training time: 0.102s
 For n_clusters = 5
-	The average silhouette_score is: 0.08352198738151066
-	Training time: 0.137s
+	The average silhouette_score is: 0.0835
+	Score: -5.81e+03
+	Training time: 0.128s
 For n_clusters = 6
-	The average silhouette_score is: 0.09289495026703623
-	Training time: 0.143s
+	The average silhouette_score is: 0.0929
+	Score: -5.62e+03
+	Training time: 0.126s
 
 cancer
 For n_clusters = 2
-	The average silhouette_score is: 0.5771380783420476
-	Training time: 0.042s
+	The average silhouette_score is: 0.577
+	Score: -1.71e+04
+	Training time: 0.038s
 For n_clusters = 3
-	The average silhouette_score is: 0.49209108511251315
-	Training time: 0.078s
+	The average silhouette_score is: 0.492
+	Score: -1.41e+04
+	Training time: 0.066s
 For n_clusters = 4
-	The average silhouette_score is: 0.48462397588426026
-	Training time: 0.099s
+	The average silhouette_score is: 0.485
+	Score: -1.29e+04
+	Training time: 0.079s
 For n_clusters = 5
-	The average silhouette_score is: 0.4680797955470899
-	Training time: 0.099s
+	The average silhouette_score is: 0.468
+	Score: -1.19e+04
+	Training time: 0.089s
 For n_clusters = 6
-	The average silhouette_score is: 0.47294180171920014
-	Training time: 0.122s
+	The average silhouette_score is: 0.473
+	Score: -1.1e+04
+	Training time: 0.100s
 done

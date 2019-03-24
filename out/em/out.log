@@ -1,0 +1,34 @@
+car
+n_components=1, time to fit=0.007231950759887695s
+n_components=2, time to fit=0.017668962478637695s
+n_components=3, time to fit=0.0242919921875s
+n_components=4, time to fit=0.02452397346496582s
+n_components=5, time to fit=0.02020716667175293s
+n_components=6, time to fit=0.02285003662109375s
+n_components=7, time to fit=0.026707887649536133s
+n_components=8, time to fit=0.043035030364990234s
+n_components=9, time to fit=0.03190016746520996s
+n_components=10, time to fit=0.06362509727478027s
+n_components=11, time to fit=0.06272006034851074s
+n_components=12, time to fit=0.0767359733581543s
+n_components=13, time to fit=0.10887408256530762s
+n_components=14, time to fit=0.04778122901916504s
+n_components=15, time to fit=0.11931705474853516s
+
+cancer
+n_components=1, time to fit=0.0037550926208496094s
+n_components=2, time to fit=0.005600929260253906s
+n_components=3, time to fit=0.04787302017211914s
+n_components=4, time to fit=0.060585975646972656s
+n_components=5, time to fit=0.03142881393432617s
+n_components=6, time to fit=0.04455137252807617s
+n_components=7, time to fit=0.09581804275512695s
+n_components=8, time to fit=0.0650789737701416s
+n_components=9, time to fit=0.09096598625183105s
+n_components=10, time to fit=0.12096905708312988s
+n_components=11, time to fit=0.20705080032348633s
+n_components=12, time to fit=0.09837007522583008s
+n_components=13, time to fit=0.12934589385986328s
+n_components=14, time to fit=0.11992406845092773s
+n_components=15, time to fit=0.25867509841918945s
+done

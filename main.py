@@ -20,9 +20,9 @@ if __name__ == "__main__":
         'kmeans', help='Runs unsupervised learning using k-means clustering.')
     parser_kmeans.set_defaults(func=kmeans)
 
-    parser_kmeans = subparsers.add_parser(
+    parser_em = subparsers.add_parser(
         'em', help='Runs unsupervised learning using expectation maximization.')
-    parser_kmeans.set_defaults(func=em)
+    parser_em.set_defaults(func=em)
 
     # Parse args and jump into correct algorithm
     options = parser.parse_args()
