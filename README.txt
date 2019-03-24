@@ -14,8 +14,6 @@ Requirements
     Before running, make sure that the `out` directory exists and has the correct directory structure. This can be done
     by running run.sh.
 
-    This can be done with the command `mkdir -p out/{boosting,decision_tree_pruning,knn,neural_net,svm}`.
-
 Running
 
     `main.py` provides usage instructions. In general, commands follow the format `python main.py <algorithm>`.
