@@ -72,8 +72,6 @@ def _run(X, y, clf, dr, dname):
     plt.savefig('out/cluster_dr/{}-{}-{}-learning.png'.format(dname, CLF_MAP[type(clf)], DR_MAP[type(dr)]))
 
 
-
-
 def cluster_dr(options):
     car_clf = [
         KMeans(n_init=20, n_clusters=4, random_state=10, max_iter=500),

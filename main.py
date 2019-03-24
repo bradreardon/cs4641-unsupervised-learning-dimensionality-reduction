@@ -4,6 +4,7 @@ import argparse
 from algorithms.clustering_with_dr import cluster_dr
 from algorithms.kmeans import kmeans
 from algorithms.em import em
+from algorithms.nn_with_dr import nn_dr
 from algorithms.pca import pca
 from algorithms.ica import ica
 from algorithms.rp import rp
@@ -43,6 +44,10 @@ if __name__ == "__main__":
     parser_cluster_dr = subparsers.add_parser(
         'cluster_dr', help='Runs dimensionality reduction, then clustering.')
     parser_cluster_dr.set_defaults(func=cluster_dr)
+
+    parser_nn_dr = subparsers.add_parser(
+        'nn_dr', help='Runs dimensionality reduction, then a neural net.')
+    parser_nn_dr.set_defaults(func=nn_dr)
 
     # Parse args and jump into correct algorithm
     options = parser.parse_args()
