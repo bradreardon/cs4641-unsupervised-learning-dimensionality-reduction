@@ -1,9 +1,9 @@
-CS 4641: Supervised Learning
+CS 4641: Unsupervised Learning and Dimensionality Reduction
 Author: Bradley Reardon
 
 Code
 
-    Code can be found at https://github.com/bradreardon/cs4641-supervised-learning.
+    Code can be found at https://github.com/bradreardon/cs4641-unsupervised-learning-dimensionality-reduction.
 
 Requirements
 
@@ -11,17 +11,8 @@ Requirements
     - Packages specified in `requirements.txt`:
         - Install with `pip install -r requirements.txt`
 
-    Before running, make sure that the `out` directory exists in the same place as `main.py` has the following
-    structure:
-
-    ```
-    out
-    |- boosting
-    |- decision_tree_pruning
-    |- knn
-    |- neural_net
-    |- svm
-    ```
+    Before running, make sure that the `out` directory exists and has the correct directory structure. This can be done
+    by running run.sh.
 
     This can be done with the command `mkdir -p out/{boosting,decision_tree_pruning,knn,neural_net,svm}`.
 
@@ -29,7 +20,7 @@ Running
 
     `main.py` provides usage instructions. In general, commands follow the format `python main.py <algorithm>`.
 
-    For some algorithms, parameters may be specified on the CLI, though some of these cases are unimplemented.
+    Examples can be found in `run.sh`.
 
     Running each script will output statistics (and warnings!) for the training of the algorithm, and will export charts
     to subdirectories of the `out` directory.
