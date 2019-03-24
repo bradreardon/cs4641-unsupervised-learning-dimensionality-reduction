@@ -1,0 +1,60 @@
+car
+n_components=2, time to fit=0.008988142013549805s
+n_components=2, score=-12.851716291544664s
+n_components=3, time to fit=0.003531932830810547s
+n_components=3, score=-12.744341669198295s
+n_components=4, time to fit=0.004950046539306641s
+n_components=4, score=-12.616924953839076s
+n_components=5, time to fit=0.003989219665527344s
+n_components=5, score=-12.463114894179764s
+n_components=6, time to fit=0.006045103073120117s
+n_components=6, score=-12.273474203542689s
+n_components=7, time to fit=0.00463104248046875s
+n_components=7, score=-12.18735586623965s
+n_components=8, time to fit=0.004912137985229492s
+n_components=8, score=-12.080911527147158s
+n_components=9, time to fit=0.00520777702331543s
+n_components=9, score=-11.94578329842794s
+n_components=10, time to fit=0.005218982696533203s
+n_components=10, score=-11.76815089978413s
+n_components=11, time to fit=0.005555868148803711s
+n_components=11, score=-11.523212722416838s
+n_components=12, time to fit=0.005672931671142578s
+n_components=12, score=-11.160911082781114s
+n_components=13, time to fit=0.0052471160888671875s
+n_components=13, score=-10.559488937308052s
+n_components=14, time to fit=0.0055637359619140625s
+n_components=14, score=-9.293980860094015s
+n_components=15, time to fit=0.006541013717651367s
+n_components=15, score=91.82981322207505s
+
+cancer
+n_components=2, time to fit=0.002469778060913086s
+n_components=2, score=-27.63347944946103s
+n_components=3, time to fit=0.002361774444580078s
+n_components=3, score=-26.506037985422065s
+n_components=4, time to fit=0.0026459693908691406s
+n_components=4, score=-25.307217947264625s
+n_components=5, time to fit=0.0023839473724365234s
+n_components=5, score=-23.632263256098735s
+n_components=6, time to fit=0.002830028533935547s
+n_components=6, score=-21.90950171069584s
+n_components=7, time to fit=0.003158092498779297s
+n_components=7, score=-18.818108403645354s
+n_components=8, time to fit=0.0031409263610839844s
+n_components=8, score=-15.487268108172898s
+n_components=9, time to fit=0.002805948257446289s
+n_components=9, score=-14.21918591761331s
+n_components=10, time to fit=0.0033919811248779297s
+n_components=10, score=-13.689135405268155s
+n_components=11, time to fit=0.003476858139038086s
+n_components=11, score=-13.08068742743945s
+n_components=12, time to fit=0.003816843032836914s
+n_components=12, score=-12.913158320718912s
+n_components=13, time to fit=0.0036411285400390625s
+n_components=13, score=-12.652820797804994s
+n_components=14, time to fit=0.004818916320800781s
+n_components=14, score=-12.45481011630296s
+n_components=15, time to fit=0.004148006439208984s
+n_components=15, score=-12.13354291791387s
+done

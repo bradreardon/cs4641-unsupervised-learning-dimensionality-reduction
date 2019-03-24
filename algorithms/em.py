@@ -58,8 +58,8 @@ def em_cancer():
     dataset = pd.read_csv("datasets/breastcancer/breast-cancer-wisconsin.data", sep=',', header=None, low_memory=False)
     data = pd.get_dummies(dataset)
 
-    X = data.values[:, :-4]
-    y = data.values[:, -4:]
+    X = data.values[:, 1:-1]  # strip sample id
+    y = data.values[:, -1:]
 
     x = list()
     y_train = list()
@@ -88,11 +88,11 @@ def em_cancer():
     plt.legend()
     plt.savefig('out/em/cancer-components-testing.png')
 
-    clf = GaussianMixture(n_components=6, random_state=10, max_iter=500)
+    clf = GaussianMixture(n_components=3, random_state=10, max_iter=500)
     clf.fit(X)
 
     skplt.estimators.plot_learning_curve(
-        clf, X, y, title="Learning Curve: EM (cancer.dataset, n_components=6)", cv=5,
+        clf, X, y, title="Learning Curve: EM (cancer.dataset, n_components=3)", cv=5,
         train_sizes=np.linspace(.1, 1.0, 10), n_jobs=-1)
     plt.yscale('symlog')
     plt.savefig('out/em/cancer-learning.png')

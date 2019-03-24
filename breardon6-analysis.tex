@@ -112,7 +112,7 @@
         \label{fig:em-comp}
         \end{figure}
 
-        In this case, the goal was to find the lowest number of components which resulted in the best scoring, as higher numbers of components increase running time. To satisfy this requirement, the car data set was chosen to have 4 components, while the cancer data set performed better with 6.
+        In this case, the goal was to find the lowest number of components which resulted in the best scoring, as higher numbers of components increase running time. To satisfy this requirement, the car data set was chosen to have 4 components, while the cancer data set performed better with 3.
 
       \subsubsection{Performance}
         The learning curves for both data sets using expectation maximization are shown in \Fref{fig:em-learning}.
@@ -135,21 +135,79 @@
         \label{fig:em-learning}
         \end{figure}
 
-        The fit times for these classifiers were 0.025s for the car data, and 0.045s for the cancer data. Interestingly enough, both data sets have high variance in their cross validation scores at some point in training. This result will be discussed further after attempting dimensionality reduction.
+        The fit times for these classifiers were 0.025s for the car data, and 0.027s for the cancer data. Interestingly enough, both data sets have high variance in their cross validation scores at least at some point during training. In addition, the cancer data set seemes to have had its cross-validation score converge with the training scores at the end of training. This result will be discussed further after attempting dimensionality reduction.
 
   \section{Dimensionality Reduction}
-    TODO
+    We will now evaluate dimensionality reduction algorithms, which are used for feature selection and to consolidate high-dimension datasets into data more easily digestible by machine learning algorithms. Note that with higher numbers of components, the dimensionality of the algorithm outputs is too high for 2D or 3D visualizations to be sufficient. As such, we will evaluate much of the performance of each algorithm on how it assists a clustering algorithm or a neural network in the next sections. This section will focus on identifying which dimensionality reduction algorithms are effective in clustering the data alone. 
 
     \subsection{PCA}
-      TODO
+      \Fref{fig:pca-plot} shows the best-found configuration for PCA to maximize clustering apparent on the first two feature spaces. Interestingly, the cancer data set did not have any variation in PCA dimensionality reduction across the first two features of the data set. Due to the high-dimensionality of PCA with larger numbers of components, it is difficult to show the effectiveness of the PCA algorithm at higher numbers of components.
+
+      As such, the car data set showed the most apparently clustering on two features with 4 components, whereas the cancer data set did not show any change in clustering on the first two features after adding more components.
+
+      \begin{figure}[htb]
+      \centering
+
+        \begin{subfigure}{0.4\textwidth}
+          \includegraphics[width=\linewidth]{out/pca/car-pca-comp-4.png}
+          \caption{PCA, car.dataset}
+          \label{fig:pca-plot-car}
+        \end{subfigure}\hfil
+        \begin{subfigure}{0.4\textwidth}
+          \includegraphics[width=\linewidth]{out/pca/cancer-pca-comp-2.png}
+          \caption{PCA, cancer.dataset}
+          \label{fig:pca-plot-cancer}
+        \end{subfigure}
+
+      \caption{PCA plots for both data sets.}
+      \label{fig:pca-plot}
+      \end{figure}
+
+      TODO something more about variance/statistics from PCA
 
     \subsection{ICA}
-      TODO
+      The ICA algorithm resulted in similar clustering to that of the PCA algorithm for the car data set, while clustering the cancer data into narrower bands that more effectively produced a cluster of blue points signifying the malignant tumor class. In this case, the number of components specified had a large effect on the plots of both data sets. The plots for the ICA algorithm can be seen in \Fref{fig:ica-plot}.
+
+      \begin{figure}[htb]
+      \centering
+
+        \begin{subfigure}{0.4\textwidth}
+          \includegraphics[width=\linewidth]{out/ica/car-ica-comp-2.png}
+          \caption{ICA, car.dataset}
+          \label{fig:ica-plot-car}
+        \end{subfigure}\hfil
+        \begin{subfigure}{0.4\textwidth}
+          \includegraphics[width=\linewidth]{out/ica/cancer-ica-comp-13.png}
+          \caption{ICA, cancer.dataset}
+          \label{fig:ica-plot-cancer}
+        \end{subfigure}
+
+      \caption{ICA plots for both data sets.}
+      \label{fig:ica-plot}
+      \end{figure}
 
     \subsection{Randomized Projections}
-      TODO
+      Unlike PCA and ICA, a run of randomized projections using the gaussian random projection algorithm from scikit-learn did not result in any meaningful clustering of either data set when plotted on two features, as shown in \Fref{fig:rp-plot}. The effectiveness of this algorithm on the data will be further evaluated when combined with another learner, such as a clustering algorithm or neural net.
 
-    \subsection{TODO pick feature selection algo}
+      \begin{figure}[htb]
+      \centering
+
+        \begin{subfigure}{0.4\textwidth}
+          \includegraphics[width=\linewidth]{out/rp/car-rp-comp-4.png}
+          \caption{RP, car.dataset}
+          \label{fig:rp-plot-car}
+        \end{subfigure}\hfil
+        \begin{subfigure}{0.4\textwidth}
+          \includegraphics[width=\linewidth]{out/rp/cancer-rp-comp-2.png}
+          \caption{RP, cancer.dataset}
+          \label{fig:rp-plot-cancer}
+        \end{subfigure}
+
+      \caption{RP plots for both data sets.}
+      \label{fig:rp-plot}
+      \end{figure}
+
+    \subsection{TODO pick feature selection algo??}
       TODO
 
   \section{Conclusion}

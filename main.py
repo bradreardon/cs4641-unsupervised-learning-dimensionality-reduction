@@ -3,6 +3,9 @@ import argparse
 
 from algorithms.kmeans import kmeans
 from algorithms.em import em
+from algorithms.pca import pca
+from algorithms.ica import ica
+from algorithms.rp import rp
 from algorithms.neural_net import neural_net
 
 
@@ -23,6 +26,18 @@ if __name__ == "__main__":
     parser_em = subparsers.add_parser(
         'em', help='Runs unsupervised learning using expectation maximization.')
     parser_em.set_defaults(func=em)
+
+    parser_pca = subparsers.add_parser(
+        'pca', help='Runs dimensionality reduction using PCA.')
+    parser_pca.set_defaults(func=pca)
+
+    parser_ica = subparsers.add_parser(
+        'ica', help='Runs dimensionality reduction using ICA.')
+    parser_ica.set_defaults(func=ica)
+
+    parser_rp = subparsers.add_parser(
+        'rp', help='Runs dimensionality reduction using Randomized Projections.')
+    parser_rp.set_defaults(func=rp)
 
     # Parse args and jump into correct algorithm
     options = parser.parse_args()
