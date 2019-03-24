@@ -1,12 +1,18 @@
+car NoneType
+	Time: 3.509
+	Score: 1.000
 car PCA
-	Time: 1.980
+	Time: 1.866
 	Score: 0.740
 car FastICA
-	Time: 3.541
-	Score: 0.794
+	Time: 4.062
+	Score: 0.775
+cancer NoneType
+	Time: 0.036
+	Score: 0.977
 cancer PCA
-	Time: 0.042
+	Time: 0.054
 	Score: 0.977
 cancer FastICA
-	Time: 0.811
+	Time: 0.261
 	Score: 0.977

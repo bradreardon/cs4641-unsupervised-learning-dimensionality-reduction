@@ -15,6 +15,8 @@
 \usepackage[labelfont=bf]{caption}
 \usepackage{subcaption}
 
+\usepackage{chngcntr} \counterwithin{figure}{section}
+
 
 \title{\textbf{CS 4641:} Unsupervised Learning and Dimensionality Reduction}
 \author{Bradley Reardon}
@@ -69,12 +71,12 @@
         \begin{figure}[htb]
         \centering
 
-          \begin{subfigure}{0.4\textwidth}
+          \begin{subfigure}{0.5\textwidth}
             \includegraphics[width=\linewidth]{out/kmeans/car-learning.png}
             \caption{Learning curve, car.dataset}
             \label{fig:kmeans-learning-car}
           \end{subfigure}\hfil
-          \begin{subfigure}{0.4\textwidth}
+          \begin{subfigure}{0.5\textwidth}
             \includegraphics[width=\linewidth]{out/kmeans/cancer-learning.png}
             \caption{Learning curve, cancer.dataset}
             \label{fig:kmeans-learning-cancer}
@@ -97,12 +99,12 @@
         \begin{figure}[htb]
         \centering
 
-          \begin{subfigure}{0.4\textwidth}
+          \begin{subfigure}{0.5\textwidth}
             \includegraphics[width=\linewidth]{out/em/car-components-testing.png}
             \caption{Scores, car.dataset}
             \label{fig:em-comp-car}
           \end{subfigure}\hfil
-          \begin{subfigure}{0.4\textwidth}
+          \begin{subfigure}{0.5\textwidth}
             \includegraphics[width=\linewidth]{out/em/cancer-components-testing.png}
             \caption{Scores, cancer.dataset}
             \label{fig:em-comp-cancer}
@@ -120,12 +122,12 @@
         \begin{figure}[htb]
         \centering
 
-          \begin{subfigure}{0.4\textwidth}
+          \begin{subfigure}{0.5\textwidth}
             \includegraphics[width=\linewidth]{out/em/car-learning.png}
             \caption{Learning curve, car.dataset}
             \label{fig:em-learning-car}
           \end{subfigure}\hfil
-          \begin{subfigure}{0.4\textwidth}
+          \begin{subfigure}{0.5\textwidth}
             \includegraphics[width=\linewidth]{out/em/cancer-learning.png}
             \caption{Learning curve, cancer.dataset}
             \label{fig:em-learning-cancer}
@@ -148,12 +150,12 @@
       \begin{figure}[htb]
       \centering
 
-        \begin{subfigure}{0.4\textwidth}
+        \begin{subfigure}{0.5\textwidth}
           \includegraphics[width=\linewidth]{out/pca/car-pca-comp-4.png}
           \caption{PCA, car.dataset}
           \label{fig:pca-plot-car}
         \end{subfigure}\hfil
-        \begin{subfigure}{0.4\textwidth}
+        \begin{subfigure}{0.5\textwidth}
           \includegraphics[width=\linewidth]{out/pca/cancer-pca-comp-2.png}
           \caption{PCA, cancer.dataset}
           \label{fig:pca-plot-cancer}
@@ -163,20 +165,18 @@
       \label{fig:pca-plot}
       \end{figure}
 
-      TODO something more about variance/statistics from PCA
-
     \subsection{ICA}
       The ICA algorithm resulted in similar clustering to that of the PCA algorithm for the car data set, while clustering the cancer data into narrower bands that more effectively produced a cluster of blue points signifying the malignant tumor class. In this case, the number of components specified had a large effect on the plots of both data sets. The plots for the ICA algorithm can be seen in \Fref{fig:ica-plot}.
 
       \begin{figure}[htb]
       \centering
 
-        \begin{subfigure}{0.4\textwidth}
+        \begin{subfigure}{0.5\textwidth}
           \includegraphics[width=\linewidth]{out/ica/car-ica-comp-2.png}
           \caption{ICA, car.dataset}
           \label{fig:ica-plot-car}
         \end{subfigure}\hfil
-        \begin{subfigure}{0.4\textwidth}
+        \begin{subfigure}{0.5\textwidth}
           \includegraphics[width=\linewidth]{out/ica/cancer-ica-comp-13.png}
           \caption{ICA, cancer.dataset}
           \label{fig:ica-plot-cancer}
@@ -192,12 +192,12 @@
       \begin{figure}[htb]
       \centering
 
-        \begin{subfigure}{0.4\textwidth}
+        \begin{subfigure}{0.5\textwidth}
           \includegraphics[width=\linewidth]{out/rp/car-rp-comp-4.png}
           \caption{RP, car.dataset}
           \label{fig:rp-plot-car}
         \end{subfigure}\hfil
-        \begin{subfigure}{0.4\textwidth}
+        \begin{subfigure}{0.5\textwidth}
           \includegraphics[width=\linewidth]{out/rp/cancer-rp-comp-2.png}
           \caption{RP, cancer.dataset}
           \label{fig:rp-plot-cancer}
@@ -206,9 +206,6 @@
       \caption{RP plots for both data sets.}
       \label{fig:rp-plot}
       \end{figure}
-
-    \subsection{TODO pick feature selection algo??}
-      TODO
 
   \section{Clustering with Dimensionality Reduction}
     Both the $k$-means clustering algorithm and expectation maximization algorithms were run with ICA and PCA for dimensionality reduction and compared to the standard clustering runs without dimensionality reduction.
@@ -275,7 +272,7 @@
       \begin{subfigure}{0.33\textwidth}
         \includegraphics[width=\linewidth]{out/cluster_dr/cancer-kmeans-ica-learning.png}
         \caption{ICA, cancer.dataset}
-      \end{subfigure}
+      \end{subfigure} 
 
     \caption{$k$-means clustering, cancer.dataset}
     \label{fig:cdr-plot-km-cancer}
@@ -302,11 +299,108 @@
     \label{fig:cdr-plot-em-cancer}
     \end{figure}
 
+  \section{Neural Networks with Dimensionality Reduction}
+    Each data set was then reduced in dimensionality with the previously-discussed algorithms, and analyzed for overall score to evaluate if dimensionality reduction is appropriate for use in either data set. Both data sets used the adam solver provided by scikit-learn, along with a max iteration setting of 1000.
+
+    \Fref{fig:nndr-plot-car} shows the results for the car data set. Again, per the prior hypothesis, dimensionality reduction did not have much to offer for the car data. All 3 runs with or without dimensionality reduction resulted in a cross-validation score somewhere around 0.8. Interestingly, the neural network trained with PCA-reduced data had the lowest running time at 1.716s, with no DR and ICA following at 3.659s and 4.275s respectively. However, despite the fact that PCA allowed the neural network to converge faster over 1000 iterations, the reduction of dimensionality for a complete set of data may not be desirable here in all cases.
+
+    \begin{figure}[htb]
+    \centering
+
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/nn_dr/car-learning.png}
+        \caption{No DR, car.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/nn_dr/car-pca-learning.png}
+        \caption{PCA, car.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/nn_dr/car-ica-learning.png}
+        \caption{ICA, car.dataset}
+      \end{subfigure}
+
+    \caption{Neural network with and without dimensionality reduction, car.dataset}
+    \label{fig:nndr-plot-car}
+    \end{figure}
+
+    \Fref{fig:nndr-plot-cancer} shows the results for the cancer data set. The effects of dimensionality reduction here are much more apparent. The training run using ICA for dimensionality reduction performed the best, converging to a cross-validation score of nearly 1.0 in around 100 less training examples than with PCA or no DR. However, the training time for ICA in this case was around 10x that of the alternatives, with a runtime of 0.352s as opposed to the running times of 0.048s and 0.038s for no DR and PCA respectively. 
+
+    \begin{figure}[htb]
+    \centering
+
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/nn_dr/cancer-learning.png}
+        \caption{No DR, cancer.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/nn_dr/cancer-pca-learning.png}
+        \caption{PCA, cancer.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=\linewidth]{out/nn_dr/cancer-ica-learning.png}
+        \caption{ICA, cancer.dataset}
+      \end{subfigure}
+
+    \caption{Neural network with and without dimensionality reduction, cancer.dataset}
+    \label{fig:nndr-plot-cancer}
+    \end{figure}
+
+    From this information, one might conclude that due to the small attribute space presented by the car and cancer data sets, dimensionality reduction isn't as effective in reducing fit time on smaller dimensions of data. However, if the attribute space of our data was 100-dimensional, for example, we would see a considerable improvement by using dimensionality reduction to reduce the problem space first, as neural networks can be extremely slow on larger dimensional data.
+
+  \section{Neural Networks with Clustering}
+    Finally, we'll evaluate neural networks once more, this time using clustering algorithms in place of dimensionality reduction algorithms. As it was difficult to determine how to properly incorporate gaussian mixture models into this test using scikit-learn, only $k$-means clustering will be evaluated.
+
+    \Fref{fig:nnc-plot-car} shows that using $k$-means clustering in conjunction with the car data set caused the overall accuracy of the neural network to drop. Because neural networks are a weight optimization problem, it would make sense that reducing the dimensionality of a complete data set using a clustering algorithm causes loss in all cases except where accuracy is 100\% for the clustering algorithm. Because this is not the case, the clustering algorithm causes the cross-validation score of the neural network to drop from just under 0.8 to under 0.6.
+
+    The neural network without clustering did take longer to run, however, with a running time of 3.371s as opposed to 0.937s with clustering. But, because the accuracy fell so much by reducing dimensionality, there is no place in using clustering on the car data set in addition to a neural network, as they are already effectively doing the same job.
+
+    \begin{figure}[htb]
+    \centering
+
+      \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\linewidth]{out/nn_cluster/car-learning.png}
+        \caption{No clustering, car.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\linewidth]{out/nn_cluster/car-kmeans-learning.png}
+        \caption{$k$-means, car.dataset}
+      \end{subfigure}
+
+    \caption{Neural network with and without clustering, car.dataset}
+    \label{fig:nnc-plot-car}
+    \end{figure}
+
+    \begin{figure}[htb]
+    \centering
+
+      \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\linewidth]{out/nn_cluster/cancer-learning.png}
+        \caption{No clustering, cancer.dataset}
+      \end{subfigure}\hfil
+      \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\linewidth]{out/nn_cluster/cancer-kmeans-learning.png}
+        \caption{$k$-means, cancer.dataset}
+      \end{subfigure}
+
+    \caption{Neural network with and without clustering, cancer.dataset}
+    \label{fig:nnc-plot-cancer}
+    \end{figure}
+
+    \Fref{fig:nnc-plot-cancer} shows that clustering had the opposite effect with the cancer data set. Instead of dropping in accuracy, the addition of clustering as a feature to the input of the neural network resulted in faster convergence and better cross-validation scores at earlier iterations for the neural network using $k$-means clustering over the neural network without clustering. This shows an interesting interaction between the two algorithms. The cluster estimation provided to the neural network, if it is relatively accurate, can be weighted as an important feature for estimating the output for an unseen input. Therefore, if the clustering algorithm works well, the neural network will take less iterations to converge.
+
+    The clustering algorithm also doesn't take much longer to run -- the neural network with $k$-means clustering trained in 0.055s, while the neural network without clustering took 0.040s to train. Thus, clustering the data first to concatenate an ``initial estimate'' is effective at converging the weights of the neural network over fewer examples and training iterations.
+
+    In all, in addition to another learning algorithm, clustering can easily function as a dimensionality reduction algorithm in itself. However, with small attribute spaces as we've discussed prior in this report, concatenating clustering results to the initial input was chosen as the best fit (pun intended) for this part of the assignment.
+
   \section{Conclusion}
-    TODO DR seems mostly ineffective on my data sets, perhaps improvements in some cases, but too few features to really make sense of if it's helping 
+    It is difficult to say whether clustering had tangible benefits over supervised learning or randomized optimization. Without better visualization of how the feature spaces within a data set interact, I was resigned to only looking at the clustering based on two features instead of the entire $n$-dimensional feature space of each data set.
 
-    Relate two assignments 1/2
+    However, dimensionality reduction seemed relatively ineffective overall on both data sets because of the narrowness of the data. The car data set did not respond well to dimensionality reduction very well at all when applied to any other algorithms, for reasons mentioned earlier regarding completeness. There were performance improvements in some isolated cases, however it is difficult to give a recommendation for using these algorithms with these data sets without further, more granular investigation.
 
+    TODO Relate two assignments 1/2
+
+    In exploring this topic in the future, I'd look toward using data sets with higher dimensions and without complete attribute coverage in order to further test the efficacy of dimensionality reduction on both discrete and continuous data. In that case, I would expect clustering and/or dimensionality reductions to provide huge performance gains for large, wide data sets when combined with a neural network as we did in previous sections.
 
 
 \end{document}

@@ -1,0 +1,12 @@
+car NoneType
+	Time: 3.371
+	Score: 1.000
+car KMeans
+	Time: 0.937
+	Score: 0.483
+cancer NoneType
+	Time: 0.040
+	Score: 0.977
+cancer KMeans
+	Time: 0.055
+	Score: 0.977

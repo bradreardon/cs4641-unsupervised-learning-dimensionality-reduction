@@ -11,24 +11,24 @@ import scikitplot as skplt
 from util import Timer
 
 
-def nn_dr_car(cluster_clf, dr_cls):
+def nn_dr_car(nn, dr_cls):
     dataset = pd.read_csv("datasets/car/car.data", sep=',', header=None, low_memory=False)
     data = pd.get_dummies(dataset)
 
     X = data.values[:, :-4]
     y = data.values[:, -4:]
 
-    _run(X, y, cluster_clf, dr_cls, 'car')
+    _run(X, y, nn, dr_cls, 'car')
 
 
-def nn_dr_cancer(cluster_clf, dr_cls):
+def nn_dr_cancer(nn, dr_cls):
     dataset = pd.read_csv("datasets/breastcancer/breast-cancer-wisconsin.data", sep=',', header=None, low_memory=False)
     data = pd.get_dummies(dataset)
 
     X = data.values[:, :-1]
     y = data.values[:, -1:]
 
-    _run(X, y, cluster_clf, dr_cls, 'cancer')
+    _run(X, y, nn, dr_cls, 'cancer')
 
 DR_MAP = {
     PCA: 'pca',
@@ -55,15 +55,20 @@ def _run(X, y, nn, dr, dname):
         score = nn.score(X, y)
     print('\tScore: {0:.3f}'.format(score))
 
-    title = "Learning Curve: NN + {} ({}.dataset)".format(DR_MAP[type(dr)], dname)
-
-    skplt.estimators.plot_learning_curve(nn, X, y, title=title, cv=5)
-    plt.savefig('out/nn_dr/{}-{}-learning.png'.format(dname, DR_MAP[type(dr)]))
+    if dr is None:
+        title = "Learning Curve: NN ({}.dataset)".format(dname)
+        skplt.estimators.plot_learning_curve(nn, X, y, title=title, cv=5)
+        plt.savefig('out/nn_dr/{}-learning.png'.format(dname))
+    else:
+        title = "Learning Curve: NN + {} ({}.dataset)".format(DR_MAP[type(dr)], dname)
+        skplt.estimators.plot_learning_curve(nn, X_dr, y, title=title, cv=5)
+        plt.savefig('out/nn_dr/{}-{}-learning.png'.format(dname, DR_MAP[type(dr)]))
 
 
 def nn_dr(options):
 
     car_dr = [
+        None,
         PCA(n_components=5, random_state=10),
         FastICA(n_components=5, random_state=10, max_iter=500),
         # GaussianRandomProjection(n_components=5, random_state=10),
@@ -77,14 +82,15 @@ def nn_dr(options):
             _dr)
 
     cancer_dr = [
-        PCA(n_components=5, random_state=10),
-        FastICA(n_components=5, random_state=10, max_iter=500),
+        None,
+        PCA(n_components=7, random_state=10),
+        FastICA(n_components=7, random_state=10, max_iter=500),
         # GaussianRandomProjection(n_components=5, random_state=10),
     ]
 
     for _dr in cancer_dr:
         nn_dr_cancer(
             MLPClassifier(
-                solver='sgd', warm_start=True, max_iter=1000
+                solver='adam', warm_start=True, max_iter=1000
             ),
             _dr)

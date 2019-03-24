@@ -1,36 +1,24 @@
 car KMeans PCA
-	Time: 0.070
+	Time: 0.069
 	Score: -1616.674
 car KMeans FastICA
-	Time: 0.058
+	Time: 0.055
 	Score: -2.678
-car KMeans FeatureAgglomeration
-	Time: 0.084
-	Score: -122.284
 car GaussianMixture PCA
-	Time: 0.023
+	Time: 0.024
 	Score: 4.985
 car GaussianMixture FastICA
-	Time: 0.021
+	Time: 0.026
 	Score: 17.991
-car GaussianMixture FeatureAgglomeration
-	Time: 0.024
-	Score: 6.241
 cancer KMeans PCA
-	Time: 0.029
+	Time: 0.025
 	Score: -74258701267065.531
 cancer KMeans FastICA
-	Time: 0.044
+	Time: 0.065
 	Score: -2.158
-cancer KMeans FeatureAgglomeration
-	Time: 0.022
-	Score: -74258701236149.719
 cancer GaussianMixture PCA
 	Time: 0.009
 	Score: -18.998
 cancer GaussianMixture FastICA
-	Time: 0.024
+	Time: 0.026
 	Score: 7.329
-cancer GaussianMixture FeatureAgglomeration
-	Time: 0.011
-	Score: -14.845

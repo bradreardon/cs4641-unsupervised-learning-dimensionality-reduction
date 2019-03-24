@@ -44,6 +44,7 @@ DR_MAP = {
 
 
 def _run(X, y, clf, dr, dname):
+    X_dr = None
     with Timer() as t:
         X_dr = dr.fit_transform(X)
         cluster_alg = clf.fit(X_dr)
@@ -64,10 +65,13 @@ def _run(X, y, clf, dr, dname):
     if isinstance(clf, GaussianMixture):
         args['train_sizes'] = np.linspace(.1, 1.0, 10)
 
-    skplt.estimators.plot_learning_curve(clf, X, y, title=title, cv=5, **args)
+    if X_dr is None:
+        skplt.estimators.plot_learning_curve(clf, X, y, title=title, cv=5, **args)
+    else:
+        skplt.estimators.plot_learning_curve(clf, X_dr, y, title=title, cv=5, **args)
 
-    if isinstance(clf, GaussianMixture):
-        plt.yscale('symlog')
+    # if isinstance(clf, GaussianMixture):
+    #     plt.yscale('symlog')
 
     plt.savefig('out/cluster_dr/{}-{}-{}-learning.png'.format(dname, CLF_MAP[type(clf)], DR_MAP[type(dr)]))
 
